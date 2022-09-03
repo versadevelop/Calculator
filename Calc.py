@@ -95,8 +95,13 @@ def button_squareroot():
 
 def button_negate():
     global CalculationVariable
-    text = "-" + input_Output_Field.get()
-    imported_Text.set(text)
+    result = input_Output_Field.get()
+    if "-" in result:
+        a = result.replace("-", "+")
+    else:
+        a = result.replace("+", "-")
+    CalculationVariable = a
+    imported_Text.set(a)
 
 
 CalculationVariable = ""
@@ -193,7 +198,7 @@ Button(buttons_On_frame, text="+", font=myFont, fg="white", width=10, height=3, 
 ##############################################################################################################
 
 Button(buttons_On_frame, text="+/-", font=myFont, fg="white", width=10, height=3, bd=0, bg="black", cursor="hand2",
-       command=lambda: button_negate).grid(row=5, column=0, padx=1, pady=1)
+       command=lambda: button_negate()).grid(row=5, column=0, padx=1, pady=1)
 
 Button(buttons_On_frame, text="0", font=myFont, fg="white", width=10, height=3, bd=0, bg="black", cursor="hand2",
        command=lambda: button_click(0)).grid(row=5, column=1, padx=1, pady=1)
